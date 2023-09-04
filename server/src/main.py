@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+from apis.hash_game import APIHashGame
 import settings
 
 
@@ -21,7 +23,7 @@ class HashGameFastApi(FastAPI):
             allow_methods=["*"],
             allow_headers=["*"],
         )
-        # self.include_router(api_router, prefix=settings.API_PREFIX)
+        self.include_router(APIHashGame(), prefix=settings.API_PREFIX)
 
 
 app = HashGameFastApi()
